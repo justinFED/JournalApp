@@ -8,7 +8,7 @@ class TaskTest < ActiveSupport::TestCase
     assert task.save, "valid task"
   end
 
-  test "cannot create task with missing detailss" do
+  test "cannot create task with missing details" do
     task = Task.new
     assert_not task.save, "invalid task"
   end
