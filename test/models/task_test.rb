@@ -30,7 +30,9 @@ class TaskTest < ActiveSupport::TestCase
     task = Task.create(name: "Complete Project", category_id: category.id)
 
     expected_details = "Complete Project (Category: Work)"
-    assert_equal expected_details, task.details_for_view
+    actual_details = task.details_for_view
+
+    assert_equal expected_details, actual_details, "Expected: #{expected_details}, Actual: #{actual_details}"
   end
 
   test "can delete a task" do
@@ -44,8 +46,12 @@ class TaskTest < ActiveSupport::TestCase
   end
 
   test "can view tasks for today" do
+    # Clear all existing tasks
+    Task.destroy_all
+
+    # Create a task with the name "Complete Project" and the category "Work"
     category = Category.create(name: "Work")
-    task = Task.create(name: "Complete Project", category_id: category.id)
+    task = Task.create(name: "Complete Project", category: category)
 
     expected_details = ["Complete Project (Category: Work)"]
     assert_equal expected_details, Task.view_tasks_for_today
