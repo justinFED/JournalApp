@@ -46,10 +46,8 @@ class TaskTest < ActiveSupport::TestCase
   end
 
   test "can view tasks for today" do
-    # Clear all existing tasks
     Task.destroy_all
 
-    # Create a task with the name "Complete Project" and the category "Work"
     category = Category.create(name: "Work")
     task = Task.create(name: "Complete Project", category: category)
 
