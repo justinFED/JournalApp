@@ -7,6 +7,7 @@ gem "rails", "~> 7.1.2"
 
 gem 'activesupport', '~> 7.1.2'
 
+gem 'bootstrap', '~> 4.0.0'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
