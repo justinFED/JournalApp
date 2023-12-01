@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_to root_path, notice: 'User successfully created and logged in!'
     else
+      flash.now[:alert] = 'Error creating user. Please check the form.'
       render :new
     end
   end

@@ -1,11 +1,22 @@
-<h1>Login</h1>
-
+<h2>Login</h2>
 <%= form_with(url: login_users_path, method: :post) do |form| %>
-  <%= form.label :username %>
-  <%= form.text_field :username %>
+  <% if flash[:alert] %>
+    <div class="alert alert-danger">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
 
-  <%= form.label :password %>
-  <%= form.password_field :password %>
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
 
-  <%= form.submit "Login" %>
+  <div class="field">
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Login" %>
+  </div>
 <% end %>
