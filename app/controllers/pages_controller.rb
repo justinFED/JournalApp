@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def landing
-    @tasks_today = Task.view_tasks_for_today
+    @tasks_today = Task.where("due_date = ?", Date.today)
     @tasks = Task.all
   end
 end

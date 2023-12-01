@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_01_115856) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_01_152355) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.text "desctiption"
@@ -23,6 +23,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_01_115856) do
     t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date "due_date"
   end
 
   create_table "users", force: :cascade do |t|

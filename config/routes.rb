@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  root 'users#new'  # Redirect to the combined registration and login page
+  root 'users#new'
 
   resources :users, only: [:new, :create] do
     collection do
-      post 'login', to: 'users#login' # Use POST for authentication
+      post 'login', to: 'users#login'
     end
   end
 
-  # ... other routes ...
+  resources :tasks
+
+  get 'landing', to: 'pages#landing'
+
 end
