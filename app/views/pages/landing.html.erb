@@ -27,7 +27,7 @@
       bottom: 0;
       left: 0;
       z-index: 1000;
-      padding-top: 56px; /* Adjust based on your navbar height */
+      padding-top: 56px;
       height: 100vh;
       overflow-y: auto;
       background-color: #f8f9fa; 
@@ -35,7 +35,7 @@
 
     .main-content {
       flex: 1;
-      padding-left: 240px; /* Adjust based on your sidebar width */
+      padding-left: 240px;
     }
 
     .sidebar-titles {
@@ -145,7 +145,6 @@
 </div>
 
 <script>
-  // Function to update the time and date
   function updateDateTime() {
     const now = new Date();
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true };
@@ -153,10 +152,8 @@
     document.getElementById('currentDateTime').innerText = formattedDateTime;
   }
 
-  // Initial call to set the time and date
   updateDateTime();
 
-  // Update the time and date every second
   setInterval(updateDateTime, 1000);
 </script>
 

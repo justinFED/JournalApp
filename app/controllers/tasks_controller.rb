@@ -50,7 +50,6 @@ class TasksController < ApplicationController
   
     def task_params
       params.require(:task).permit(:name, :category_id)
-      # Adjust permitted parameters based on your Task model attributes
     end
   end
   
