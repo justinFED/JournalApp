@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :tasks
 
-  get 'landing', to: 'pages#landing'
+  resources :categories
 
+  get 'landing', to: 'pages#landing'
 end
