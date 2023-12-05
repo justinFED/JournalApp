@@ -49,6 +49,10 @@
       font-weight: bold;
       margin-bottom: 10px;
     }
+
+    .download-button {
+      margin-bottom: 30px; 
+    }
   </style>
 </head>
 
@@ -107,42 +111,97 @@
       </nav>
     </div>
 
+
     <div class="col-md-8 offset-md-1">
-      <!-- Main Content -->
-      <div class="text-center">
-        <!-- Your content here -->
-        <h1 class="display-4">Welcome to Your Journal App</h1>
-        <p class="lead">Stay organized and productive with your tasks and thoughts.</p>
-
-        <div class="row mt-4">
-          <div class="col-md-6">
-            <h2>Tasks for Today</h2>
-            <ul class="list-group">
-              <% @tasks_today.each do |task| %>
-                <li class="list-group-item"><%= task.details_for_view %></li>
-              <% end %>
-            </ul>
-          </div>
-
-          <div class="col-md-6">
-            <h2>All Tasks</h2>
-            <ul class="list-group">
-              <% @tasks.each do |task| %>
-                <li class="list-group-item"><%= task.details_for_view %></li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-
-        <div class="row mt-4">
-          <div class="col-md-8 offset-md-2 text-center">
-            <%= link_to "Create a New Task", new_task_path, class: "btn btn-primary" %>
-          </div>
-        </div>
+    <!-- Main Page Content -->
+    <div class="text-center">
+      <h1 class="display-4">Welcome to Reflectify</h1>
+      <p class="lead">Discover the Art of Digital Reflection</p>
+    </div>
+  
+    <!-- App Features -->
+    <div class="row mt-5">
+      <div class="col-md-4">
+        <h3>Embrace the Future of Journaling</h3>
+        <p>Say goodbye to conventional journaling and welcome Reflectify into your life. Our app seamlessly integrates the timeless practice of reflection with cutting-edge technology. Immerse yourself in an intuitive, user-friendly experience that transforms the way you capture your thoughts.</p>
+      </div>
+  
+      <div class="col-md-4">
+        <h3>Personalization at Your Fingertips</h3>
+        <p>Craft a journal that's as unique as you are. With Reflectify, customization is key. Choose from a spectrum of templates, fonts, and themes to express yourself effortlessly. Your journal, your style—unleash the power of personalization.</p>
+      </div>
+  
+      <div class="col-md-4">
+        <h3>Stay Inspired, Stay Organized</h3>
+        <p>Navigate through your thoughts effortlessly. Reflectify's powerful organizational tools ensure you never lose track of your entries. Receive daily prompts and inspirational quotes to spark creativity, keeping your journaling journey both organized and inspired.</p>
       </div>
     </div>
+  
+    <!-- Key Features -->
+    <div class="row mt-5">
+      <div class="col-md-3">
+        <h4>Secure Cloud Sync</h4>
+        <p>Your reflections are securely stored in the cloud, ensuring access anytime, anywhere.</p>
+      </div>
+  
+      <div class="col-md-3">
+        <h4>Intelligent Reminders</h4>
+        <p>Cultivate a consistent journaling habit with personalized reminders tailored to your schedule.</p>
+      </div>
+  
+      <div class="col-md-3">
+        <h4>Mood Tracking</h4>
+        <p>Visualize your emotional journey with our mood tracking feature, gaining valuable insights into your well-being.</p>
+      </div>
+  
+      <div class="col-md-3">
+        <h4>Privacy Controls</h4>
+        <p>Enjoy peace of mind with customizable privacy settings. Share selectively or keep your thoughts entirely private.</p>
+      </div>
+    </div>
+  
+    <!-- Join the Community -->
+    <div class="mt-5">
+      <h2 class="text-center">Join the Reflectify Community</h2>
+      <p class="text-center">Connect with fellow reflection enthusiasts. Share insights, discover new journaling techniques, and be part of a supportive community that values personal growth.</p>
+    </div>
+  
+    <!-- Download Now Button -->
+    <div class="text-center mt-5">
+      <a href="#" class="btn btn-primary btn-lg download-button">Download Reflectify</a>
+    </div>
   </div>
-</div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Time and Date -->
 
 <script>
   function updateDateTime() {
