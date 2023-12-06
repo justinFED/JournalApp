@@ -124,17 +124,26 @@
       </div>
     
       <!-- Display Categories -->
-      <div class="row mt-5">
-        <div class="col-md-8 offset-md-2">
-          <h2>All Categories</h2>
-          <ul class="list-group">
-            <% @categories.each do |category| %>
-              <li class="list-group-item"><%= category.name %></li>
+<div class="row mt-5">
+  <div class="col-md-8 offset-md-2">
+    <h2>All Categories</h2>
+    <ul class="list-group">
+      <% @categories.each do |category| %>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+          <%= category.name %>
+          <div class="btn-group " role="group">
+            <%= link_to "Edit", edit_category_path(category), class: "btn btn-warning btn-sm" %>
+            <%= form_with(model: category, method: :delete, url: category_path(category), data: { confirm: "Are you sure?" }) do |form| %>
+              <%= form.button "Delete", class: "btn btn-danger btn-sm" %>
             <% end %>
-          </ul>
-        </div>
-      </div>
-    </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+      
     
 
 
