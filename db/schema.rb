@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_01_152355) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_07_150407) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.text "desctiption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
@@ -24,6 +26,8 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_01_152355) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.date "due_date"
+    t.integer "user_id", default: 1, null: false
+    t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -31,6 +35,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_01_152355) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
   end
 
+  add_foreign_key "categories", "users"
+  add_foreign_key "tasks", "users"
 end

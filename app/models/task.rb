@@ -1,5 +1,6 @@
 class Task < ApplicationRecord
   belongs_to :category
+  belongs_to :user
 
   validates :name, presence: true
 
@@ -9,9 +10,10 @@ class Task < ApplicationRecord
     "#{task_name} (Category: #{category_name})"
   end
 
-  def self.view_tasks_for_today
+  def self.view_tasks_for_today(user)
     today = Date.today
-    where('created_at >= ? AND created_at < ?', today.beginning_of_day, today.end_of_day)
+    where(user: user)
+      .where('created_at >= ? AND created_at < ?', today.beginning_of_day, today.end_of_day)
       .map(&:details_for_view)
   end
 end
