@@ -61,46 +61,52 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-2">
-      <!-- Left Sidebar -->
-      <nav class="col-md-2 d-none d-md-block sidebar w min-vh-100">
-        <div class="sidebar-sticky">
-          <div class="sidebar-titles">
-            <p class="h6 font-weight-bold" style="font-size: 14px;">Time and Date</p>
-            <p id="currentDateTime" class="text-secondary"></p>
-          </div>
-
-          <hr class="mt-3 mb-3">
-
-          <ul class="nav flex-column">
+    <!-- Left Sidebar -->
+    <nav class="col-md-2 d-none d-md-block sidebar w min-vh-100">
+      <div class="sidebar-sticky">
+        <div class="sidebar-titles">
+          <p class="h6 font-weight-bold" style="font-size: 14px;">Time and Date</p>
+          <p id="currentDateTime" class="text-secondary"></p>
+        </div>
+    
+        <hr class="mt-3 mb-3">
+    
+        <ul class="nav flex-column">
           <li class="nav-item">
-          <%= link_to "Home", landing_path, class: "nav-link active" %>
-        </li>
-            <li class="nav-item">
+            <%= link_to "Home", landing_path, class: "nav-link active" %>
+          </li>
+          <li class="nav-item">
             <%= link_to "Tasks", tasks_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item">
+          </li>
+          <li class="nav-item">
             <%= link_to "Categories", categories_path, class: "nav-link" %>
           </li>
-          </ul>
-
-          <!-- Border line below categories -->
-          <hr class="mt-3 mb-3">
-          <!-- Additional options -->
-          <div class="sidebar-titles">
-            <p class="h6 font-weight-bold" style="font-size: 14px;">Categories</p>
-          </div>
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                My Categories
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Create New Category
-              </a>
-            </li>
-          </ul>
+        </ul>
+    
+        <!-- Border line below categories -->
+        <hr class="mt-3 mb-3">
+        <!-- Additional options -->
+        <div class="sidebar-titles">
+          <p class="h6 font-weight-bold" style="font-size: 14px;">Categories</p>
+        </div>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              My Categories
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              Create New Category
+            </a>
+          </li>
+        </ul>
+    
+        <!-- Logout Button -->
+        <%= link_to 'Logout', login_users_path, method: :delete, class: 'btn btn-danger mt-3' %>
+      </div>
+    </nav>
+    
         </div>
       </nav>
     </div>
@@ -208,6 +214,22 @@
   updateDateTime();
 
   setInterval(updateDateTime, 1000);
+
+  function logout() {
+    const form = document.createElement('form');
+    form.method = 'post';
+    form.action = '<%= login_users_path %>'; // Use the Rails path helper
+
+
+    const csrfToken = document.createElement('input');
+    csrfToken.type = 'hidden';
+    csrfToken.name = '<%= request_forgery_protection_token %>';
+    csrfToken.value = '<%= form_authenticity_token %>';
+    form.appendChild(csrfToken);
+
+    document.body.appendChild(form);
+    form.submit();
+  }
 </script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
