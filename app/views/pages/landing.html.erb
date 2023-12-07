@@ -15,12 +15,10 @@
       min-height: 100vh;
       flex-direction: column;
     }
-
     .container-fluid {
       flex: 1;
       display: flex;
     }
-
     .sidebar {
       position: fixed;
       top: 0;
@@ -32,19 +30,15 @@
       overflow-y: auto;
       background-color: #f8f9fa; 
     }
-
     .main-content {
-      text-align: center;
-      margin-left: 250px; /* Adjust based on your sidebar width */
-      margin-right: 20px; /* Adjust margin-right as needed */
-      padding: 20px; /* Adjust padding based on your design */
+      flex: 1;
+      padding-left: 240px;
     }
-
     .sidebar-titles {
       text-align: center;
       margin-bottom: 20px;
+      
     }
-
     .sidebar-titles p {
       font-size: 18px;
       font-weight: bold;
@@ -62,51 +56,54 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-2">
-      <!-- Left Sidebar -->
-      <nav class="col-md-2 d-none d-md-block sidebar w min-vh-100">
-        <div class="sidebar-sticky">
-          <div class="sidebar-titles">
-            <p class="h6 font-weight-bold" style="font-size: 14px;">Time and Date</p>
-            <p id="currentDateTime" class="text-secondary"></p>
-          </div>
-    
-          <hr class="mt-3 mb-3">
-    
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <%= link_to "Home", landing_path, class: "nav-link active" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Tasks", tasks_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "Categories", categories_path, class: "nav-link" %>
-            </li>
-          </ul>
-    
-          <!-- Border line below categories -->
-          <hr class="mt-3 mb-3">
-          <!-- Additional options -->
-          <div class="sidebar-titles">
-            <p class="h6 font-weight-bold" style="font-size: 14px;">Categories</p>
-          </div>
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                My Categories
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                Create New Category
-              </a>
-            </li>
-          </ul>
-    
-          <!-- Logout Button -->
-          <%= link_to 'Logout', login_users_path, method: :delete, class: 'btn btn-danger mt-3' %>
+    <!-- Left Sidebar -->
+    <nav class="col-md-2 d-none d-md-block sidebar w min-vh-100">
+  <div class="sidebar-sticky">
+        <div class="sidebar-titles">
+          <p class="h6 font-weight-bold" style="font-size: 14px;">Time and Date</p>
+          <p id="currentDateTime" class="text-secondary"></p>
         </div>
-      </nav>
+    
+        <hr class="mt-3 mb-3">
+    
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <%= link_to "Home", landing_path, class: "nav-link active" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Tasks", tasks_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Categories", categories_path, class: "nav-link" %>
+          </li>
+        </ul>
+    
+        <!-- Border line below categories -->
+        <hr class="mt-3 mb-3">
+        <!-- Additional options -->
+        <div class="sidebar-titles">
+        <p class="h6 font-weight-bold" style="font-size: 14px;">Categories</p>
+      </div>
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            My Categories
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">
+            Create New Category
+          </a>
+        </li>
+      </ul>
+  
+      <!-- Logout Button -->
+      <div class="mt-auto text-center">
+        <%= link_to 'Logout', login_users_path, method: :delete, class: 'btn btn-danger mt-3' %>
+      </div>
+    </div>
+  </nav>
+    
     </div>
 
     <div class="col-md-8 offset-md-1">
@@ -168,15 +165,6 @@
   </div>
 </div>
 </div>
-    
-    
-    
-    
-    
-    
-    
-
-      
 
 <!-- Time and Date -->
 <script>
