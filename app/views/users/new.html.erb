@@ -8,6 +8,10 @@
   <%= csp_meta_tag %>
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
+
   <style>
     body {
       height: 100vh;
@@ -16,37 +20,45 @@
       align-items: center;
       justify-content: center;
     }
+
+    .container {
+      margin-top: 0; /* Adjust the top margin */
+    }
+
   </style>
 </head>
 
 <body class="bg-light">
   <div class="container">
-    <div class="row justify-content-center align-items-center">
-      <div class="col-md-6 text-center border border-4 p-5">
-        <div id="login-form">
-            <h2 class="mb-4">Login</h2>
-            <%= form_with(url: login_users_path, method: :post) do |form| %>
-              <% if flash[:alert] %>
-                <div class="alert alert-danger">
-                  <%= flash[:alert] %>
-                </div>
-              <% end %>
-
-              <div class="form-group">
-                <%= form.label :username %>
-                <%= form.text_field :username, class: "form-control" %>
-              </div>
-
-              <div class="form-group">
-                <%= form.label :password %>
-                <%= form.password_field :password, class: "form-control" %>
-              </div>
-
-              <div class="form-group">
-                <%= form.submit "Login", class: "btn btn-primary" %>
-              </div>
-            <% end %>
+  <h1 class="mb-3 text-center" style="font-family: 'Caveat', cursive; color: #3498db; font-size: 6rem">Reflectify</h1>
+  <div class="row justify-content-center align-items-center">
+  
+  <div class="col-md-6 text-center border border-4 p-5">
+    
+    <div id="login-form">
+      <h2 class="mb-4">Login</h2>
+      <%= form_with(url: login_users_path, method: :post) do |form| %>
+        <% if flash[:alert] %>
+          <div class="alert alert-danger">
+            <%= flash[:alert] %>
           </div>
+        <% end %>
+
+        <div class="form-group">
+          <%= form.label :username %>
+          <%= form.text_field :username, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :password %>
+          <%= form.password_field :password, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= form.submit "Login", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
 
           <div id="register-form" style="display: none;">
             <h2 class="mb-4">Register</h2>

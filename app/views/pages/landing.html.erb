@@ -34,14 +34,15 @@
     }
 
     .main-content {
-      flex: 1;
-      padding-left: 240px;
+      text-align: center;
+      margin-left: 250px; /* Adjust based on your sidebar width */
+      margin-right: 20px; /* Adjust margin-right as needed */
+      padding: 20px; /* Adjust padding based on your design */
     }
 
     .sidebar-titles {
       text-align: center;
       margin-bottom: 20px;
-      
     }
 
     .sidebar-titles p {
@@ -61,120 +62,123 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-2">
-    <!-- Left Sidebar -->
-    <nav class="col-md-2 d-none d-md-block sidebar w min-vh-100">
-      <div class="sidebar-sticky">
-        <div class="sidebar-titles">
-          <p class="h6 font-weight-bold" style="font-size: 14px;">Time and Date</p>
-          <p id="currentDateTime" class="text-secondary"></p>
-        </div>
+      <!-- Left Sidebar -->
+      <nav class="col-md-2 d-none d-md-block sidebar w min-vh-100">
+        <div class="sidebar-sticky">
+          <div class="sidebar-titles">
+            <p class="h6 font-weight-bold" style="font-size: 14px;">Time and Date</p>
+            <p id="currentDateTime" class="text-secondary"></p>
+          </div>
     
-        <hr class="mt-3 mb-3">
+          <hr class="mt-3 mb-3">
     
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <%= link_to "Home", landing_path, class: "nav-link active" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Tasks", tasks_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Categories", categories_path, class: "nav-link" %>
-          </li>
-        </ul>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <%= link_to "Home", landing_path, class: "nav-link active" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Tasks", tasks_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Categories", categories_path, class: "nav-link" %>
+            </li>
+          </ul>
     
-        <!-- Border line below categories -->
-        <hr class="mt-3 mb-3">
-        <!-- Additional options -->
-        <div class="sidebar-titles">
-          <p class="h6 font-weight-bold" style="font-size: 14px;">Categories</p>
-        </div>
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              My Categories
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              Create New Category
-            </a>
-          </li>
-        </ul>
+          <!-- Border line below categories -->
+          <hr class="mt-3 mb-3">
+          <!-- Additional options -->
+          <div class="sidebar-titles">
+            <p class="h6 font-weight-bold" style="font-size: 14px;">Categories</p>
+          </div>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                My Categories
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                Create New Category
+              </a>
+            </li>
+          </ul>
     
-        <!-- Logout Button -->
-        <%= link_to 'Logout', login_users_path, method: :delete, class: 'btn btn-danger mt-3' %>
-      </div>
-    </nav>
-    
+          <!-- Logout Button -->
+          <%= link_to 'Logout', login_users_path, method: :delete, class: 'btn btn-danger mt-3' %>
         </div>
       </nav>
     </div>
 
-
     <div class="col-md-8 offset-md-1">
-    <!-- Main Page Content -->
     <div class="text-center">
-      <h1 class="display-4">Welcome to Reflectify</h1>
-      <p class="lead">Discover the Art of Digital Reflection</p>
+    <h1 class="display-4">Welcome to Reflectify</h1>
+    <p class="lead">Discover the Art of Digital Reflection</p>
+  </div>
+
+  <!-- App Features -->
+  <div class="row mt-5">
+    <div class="col-md-4">
+      <h3>Embrace the Future of Journaling</h3>
+      <p>Say goodbye to conventional journaling and welcome Reflectify into your life. Our app seamlessly integrates the timeless practice of reflection with cutting-edge technology. Immerse yourself in an intuitive, user-friendly experience that transforms the way you capture your thoughts.</p>
     </div>
-  
-    <!-- App Features -->
-    <div class="row mt-5">
-      <div class="col-md-4">
-        <h3>Embrace the Future of Journaling</h3>
-        <p>Say goodbye to conventional journaling and welcome Reflectify into your life. Our app seamlessly integrates the timeless practice of reflection with cutting-edge technology. Immerse yourself in an intuitive, user-friendly experience that transforms the way you capture your thoughts.</p>
-      </div>
-  
-      <div class="col-md-4">
-        <h3>Personalization at Your Fingertips</h3>
-        <p>Craft a journal that's as unique as you are. With Reflectify, customization is key. Choose from a spectrum of templates, fonts, and themes to express yourself effortlessly. Your journal, your style—unleash the power of personalization.</p>
-      </div>
-  
-      <div class="col-md-4">
-        <h3>Stay Inspired, Stay Organized</h3>
-        <p>Navigate through your thoughts effortlessly. Reflectify's powerful organizational tools ensure you never lose track of your entries. Receive daily prompts and inspirational quotes to spark creativity, keeping your journaling journey both organized and inspired.</p>
-      </div>
+
+    <div class="col-md-4">
+      <h3>Personalization at Your Fingertips</h3>
+      <p>Craft a journal that's as unique as you are. With Reflectify, customization is key. Choose from a spectrum of templates, fonts, and themes to express yourself effortlessly. Your journal, your style—unleash the power of personalization.</p>
     </div>
-  
-    <!-- Key Features -->
-    <div class="row mt-5">
-      <div class="col-md-3">
-        <h4>Secure Cloud Sync</h4>
-        <p>Your reflections are securely stored in the cloud, ensuring access anytime, anywhere.</p>
-      </div>
-  
-      <div class="col-md-3">
-        <h4>Intelligent Reminders</h4>
-        <p>Cultivate a consistent journaling habit with personalized reminders tailored to your schedule.</p>
-      </div>
-  
-      <div class="col-md-3">
-        <h4>Mood Tracking</h4>
-        <p>Visualize your emotional journey with our mood tracking feature, gaining valuable insights into your well-being.</p>
-      </div>
-  
-      <div class="col-md-3">
-        <h4>Privacy Controls</h4>
-        <p>Enjoy peace of mind with customizable privacy settings. Share selectively or keep your thoughts entirely private.</p>
-      </div>
-    </div>
-  
-    <!-- Join the Community -->
-    <div class="mt-5">
-      <h2 class="text-center">Join the Reflectify Community</h2>
-      <p class="text-center">Connect with fellow reflection enthusiasts. Share insights, discover new journaling techniques, and be part of a supportive community that values personal growth.</p>
-    </div>
-  
-    <!-- Download Now Button -->
-    <div class="text-center mt-5">
-      <a href="#" class="btn btn-primary btn-lg download-button">Download Reflectify</a>
+
+    <div class="col-md-4">
+      <h3>Stay Inspired, Stay Organized</h3>
+      <p>Navigate through your thoughts effortlessly. Reflectify's powerful organizational tools ensure you never lose track of your entries. Receive daily prompts and inspirational quotes to spark creativity, keeping your journaling journey both organized and inspired.</p>
     </div>
   </div>
-  
+
+  <!-- Key Features -->
+  <div class="row mt-5">
+    <div class="col-md-3">
+      <h4>Secure Cloud Sync</h4>
+      <p>Your reflections are securely stored in the cloud, ensuring access anytime, anywhere.</p>
+    </div>
+
+    <div class="col-md-3">
+      <h4>Intelligent Reminders</h4>
+      <p>Cultivate a consistent journaling habit with personalized reminders tailored to your schedule.</p>
+    </div>
+
+    <div class="col-md-3">
+      <h4>Mood Tracking</h4>
+      <p>Visualize your emotional journey with our mood tracking feature, gaining valuable insights into your well-being.</p>
+    </div>
+
+    <div class="col-md-3">
+      <h4>Privacy Controls</h4>
+      <p>Enjoy peace of mind with customizable privacy settings. Share selectively or keep your thoughts entirely private.</p>
+    </div>
+  </div>
+
+  <!-- Join the Community -->
+  <div class="mt-5">
+    <h2 class="text-center">Join the Reflectify Community</h2>
+    <p class="text-center">Connect with fellow reflection enthusiasts. Share insights, discover new journaling techniques, and be part of a supportive community that values personal growth.</p>
+  </div>
+
+  <!-- Download Now Button -->
+  <div class="text-center mt-5">
+    <a href="#" class="btn btn-primary btn-lg download-button">Download Reflectify</a>
+  </div>
+</div>
+</div>
+    
+    
+    
+    
+    
+    
+    
+
+      
 
 <!-- Time and Date -->
-
 <script>
   function updateDateTime() {
     const now = new Date();
@@ -191,7 +195,6 @@
     const form = document.createElement('form');
     form.method = 'post';
     form.action = '<%= login_users_path %>'; // Use the Rails path helper
-
 
     const csrfToken = document.createElement('input');
     csrfToken.type = 'hidden';
