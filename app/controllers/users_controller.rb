@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to login_users_path, notice: 'User successfully created. Please log in!'
+      redirect_to login_users_path, notice: 'User successfully created and logged in!'
     else
       flash.now[:alert] = 'Error creating user. Please check the form.'
       render :new
@@ -17,9 +17,8 @@ class UsersController < ApplicationController
 
   def login
     @user = User.new
-  
     user = authenticate_user(params[:username], params[:password])
-  
+
     if user
       session[:user_id] = user.id
       redirect_to landing_path, notice: 'Logged in successfully.'
@@ -28,7 +27,11 @@ class UsersController < ApplicationController
       render :new
     end
   end
-  
+
+  def logout
+    session[:user_id] = nil
+    redirect_to login_path, notice: 'Logged out successfully.'
+  end
 
   private
 
