@@ -194,22 +194,22 @@
 <!-- Display Tasks -->
 <div class="row mt-5">
   <% @categories.each do |category| %>
-    <div class="col-md-6">
-      <h2><%= category.name %></h2>
-      <ul class="list-group">
-        <% category.tasks.each do |task| %>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            <%= task.name %>
-            <span class="badge badge-primary highlighted-due-date"><%= task.due_date ? task.due_date.strftime('%b %e, %Y') : 'Not set' %></span>
-            <div class="btn-group" role="group">
-              <%= link_to "Edit", edit_task_path(task), class: "btn btn-warning btn-sm" %>
-            </div>
-            
-
-          </li>
-        <% end %>
-      </ul>
-    </div>
+    <% if category.tasks.present? %>
+      <div class="col-md-6">
+        <h2><%= category.name %></h2>
+        <ul class="list-group">
+          <% category.tasks.each do |task| %>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              <%= task.name %>
+              <span class="badge badge-primary highlighted-due-date"><%= task.due_date ? task.due_date.strftime('%b %e, %Y') : 'Not set' %></span>
+              <div class="btn-group" role="group">
+                <%= link_to "Edit", edit_task_path(task), class: "btn btn-warning btn-sm" %>
+              </div>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
   <% end %>
 </div>
 
