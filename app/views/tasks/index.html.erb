@@ -109,26 +109,28 @@
     <p class="lead">Discover the Art of Digital Reflection</p>
   </div>
 
-  <!-- Task Form -->
   <div class="row mt-5">
-    <div class="col-md-8 offset-md-2">
-      <h2>Create a New Task</h2>
-      <%= form_with(model: Task.new, url: tasks_path, method: :post) do |form| %>
-        <div class="form-group">
-          <%= form.label :name, "Task Name" %>
-          <%= form.text_field :name, class: "form-control", placeholder: "Enter task name", required: true %>
-        </div>
-        <div class="form-group">
-          <%= form.label :category_id, "Category" %>
-          <%= form.collection_select :category_id, @categories, :id, :name, { prompt: "Select category" }, class: "form-control", required: true %>
-        </div>
-        <%= form.submit "Create Task", class: "btn btn-primary" %>
-      <% end %>
-      
-    </div>
+  <div class="col-md-8 offset-md-2">
+    <h2>Create a New Task</h2>
+    <%= form_with(model: Task.new, url: tasks_path, method: :post) do |form| %>
+      <div class="form-group">
+        <%= form.label :name, "Task Name" %>
+        <%= form.text_field :name, class: "form-control", placeholder: "Enter task name", required: true %>
+      </div>
+      <div class="form-group">
+        <%= form.label :category_id, "Category" %>
+        <%= form.collection_select :category_id, @categories, :id, :name, { prompt: "Select category" }, class: "form-control", required: true %>
+      </div>
+      <div class="form-group">
+        <%= form.label :due_date, "Due Date" %>
+        <%= form.date_field :due_date, class: "form-control", required: true %>
+      </div>
+      <%= form.submit "Create Task", class: "btn btn-primary" %>
+    <% end %>
   </div>
+</div>
 
-  <!-- Display Tasks -->
+<!-- Display Tasks -->
 <div class="row mt-5">
   <% @categories.each do |category| %>
     <div class="col-md-6">
@@ -137,9 +139,12 @@
         <% category.tasks.each do |task| %>
           <li class="list-group-item d-flex justify-content-between align-items-center">
             <%= task.name %>
+            <span class="badge badge-primary highlighted-due-date"><%= task.due_date ? task.due_date.strftime('%b %e, %Y') : 'Not set' %></span>
             <div class="btn-group" role="group">
               <%= link_to "Edit", edit_task_path(task), class: "btn btn-warning btn-sm" %>
             </div>
+            
+
           </li>
         <% end %>
       </ul>
