@@ -195,16 +195,16 @@
 <div class="row mt-3 mb-5">
   <% @categories.each do |category| %>
     <% if category.tasks.present? %>
-      <div class="col-md-6 mt-3 ">
-        <div class="border p-3 ">
+      <div class="col-md-6 mt-3">
+        <div class="border p-3">
           <h2><%= category.name %></h2>
-          <ul class="list-group ">
+          <ul class="list-group">
             <% category.tasks.each do |task| %>
-              <li class="list-group-item d-flex justify-content-between align-items-center ">
-                <%= task.name %>
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span class="text-truncate"><%= task.name %></span>
                 <span class="badge badge-primary highlighted-due-date"><%= task.due_date ? task.due_date.strftime('%b %e, %Y') : 'Not set' %></span>
-                <div class="btn-group" role="group">
-                  <%= link_to "Edit", edit_task_path(task), class: "btn btn-warning btn-sm" %>
+                <div class="btn-group" role="group">            
+                  <%= link_to "Details", task_path(task), class: "btn btn-info btn-sm" %>
                 </div>
               </li>
             <% end %>
@@ -214,6 +214,10 @@
     <% end %>
   <% end %>
 </div>
+
+
+
+
 
 
     <!-- Time and Date -->
