@@ -198,12 +198,15 @@
       <div class="col-md-6 mt-3">
         <div class="border p-3">
           <h2><%= category.name %></h2>
-          <ul class="list-group">
+          <ul class="list-group" style="display: flex; flex-direction: column;">
             <% category.tasks.each do |task| %>
-              <li class="list-group-item d-flex justify-content-between align-items-center">
-                <span class="text-truncate"><%= task.name %></span>
+              <li class="list-group-item d-flex justify-content-between align-items-center" style="flex-shrink: 1;">
+                <div class="form-check">
+                <%= check_box_tag "task_#{task.id}_status", 1, task.done, class: "form-check-input task-status-checkbox", data: { task_id: task.id, task_done: task.done } %>
+                <%= label_tag "task_#{task.id}_status", task.name, class: "form-check-label text-truncate", style: ("text-decoration: line-through;" if task.done) %>            
+                </div>
                 <span class="badge badge-primary highlighted-due-date"><%= task.due_date ? task.due_date.strftime('%b %e, %Y') : 'Not set' %></span>
-                <div class="btn-group" role="group">            
+                <div class="btn-group" role="group">
                   <%= link_to "Details", task_path(task), class: "btn btn-info btn-sm" %>
                 </div>
               </li>
@@ -214,6 +217,7 @@
     <% end %>
   <% end %>
 </div>
+
 
 
 
@@ -233,6 +237,32 @@
   updateDateTime();
 
   setInterval(updateDateTime, 1000);
+
+  document.addEventListener("DOMContentLoaded", function() {
+  const checkboxes = document.querySelectorAll('.task-status-checkbox');
+
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener('change', function() {
+      const taskId = this.dataset.taskId;
+      const status = this.checked;
+
+      this.nextElementSibling.style.textDecoration = status ? 'line-through' : 'none';
+
+      fetch(`/tasks/${taskId}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
+        },
+        body: JSON.stringify({ task: { done: status } })
+      });
+    });
+  });
+});
+
+
+
+
 </script>
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
